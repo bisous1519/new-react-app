@@ -2,8 +2,11 @@ import React, { useState } from "react";
 
 export default function Counter() {
   const [number, setNumber] = useState(0);
+  // const number = numberState[0];
+  // const setNumber = numberState[1];
+
   const increase = () => {
-    setNumber((prevNumber) => prevNumber + 1);
+    setNumber((prevNumber) => prevNumber + 1); // 최적화 관련, 함수형 업데이트
     // setNumber(number + 1);
   };
   const decrease = () => {
