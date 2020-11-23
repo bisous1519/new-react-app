@@ -29,9 +29,14 @@ function UserList() {
   ];
   return (
     <div>
-      <User user={users[0]} />
+      {users.map((user) => (
+        <User user={user} />
+      ))}
+
+      {/* <User user={users[0]} />
       <User user={users[1]} />
-      <User user={users[2]} />
+      <User user={users[2]} /> */}
+
       {/* <div>
         <b>{users[0].username}</b>
         <span>({users[0].email})</span>
