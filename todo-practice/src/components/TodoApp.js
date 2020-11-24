@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import cryptoRandomString from "crypto-random-string";
 import TodoCreator from "./TodoCreator";
 import TodoItem from "./TodoItem";
@@ -9,6 +9,21 @@ const initialTodos = [
 // let id = 0;
 export default function TodoApp() {
   const [todos, setTodos] = useState(initialTodos);
+
+  useEffect(() => {
+    // mount 되었을때 실행되는 부분
+    console.log("투두앱이 그려졌습니다!", todos);
+    return () => {
+      // unmount 되었을때 실행되는 부분
+      console.log("투두앱이 지워졌습니다.");
+    };
+  }, [todos]);
+  // useEffect(() => {
+  //   effect
+  //   return () => {
+  //     cleanup
+  //   }
+  // }, [input])
 
   const addTodo = (title) => {
     const newTodo = {
@@ -23,6 +38,14 @@ export default function TodoApp() {
   };
   // console.log(todos);
 
+  const onToggle = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+      )
+    );
+  };
+
   const removeTodo = (id) => {
     // console.log(id);
     setTodos(todos.filter((todo) => todo.id !== id));
@@ -35,7 +58,12 @@ export default function TodoApp() {
     <div>
       {/* <TodoItem /> */}
       {todos.map((todo) => (
-        <TodoItem todo={todo} removeTodo={removeTodo} key={todo.id} />
+        <TodoItem
+          todo={todo}
+          removeTodo={removeTodo}
+          onToggle={onToggle}
+          key={todo.id}
+        />
       ))}
       <TodoCreator addTodo={addTodo} />
     </div>

@@ -1,13 +1,26 @@
 import React from "react";
 
-export default function TodoItem({ todo, removeTodo }) {
+export default function TodoItem({ todo, removeTodo, onToggle }) {
   const titleStyle = {
     textDecoration: "line-through",
   };
+  const removeBtnStyle = {
+    background: "none",
+    border: "none",
+    color: "coral",
+    fontWeight: "500",
+  };
   return (
     <div>
-      <span style={todo.done ? titleStyle : null}>{todo.title}</span>
-      <button onClick={() => removeTodo(todo.id)}>제거</button>
+      <span
+        style={todo.done ? titleStyle : null}
+        onClick={() => onToggle(todo.id)}
+      >
+        {todo.title}
+      </span>
+      <button style={removeBtnStyle} onClick={() => removeTodo(todo.id)}>
+        x
+      </button>
     </div>
   );
 }
