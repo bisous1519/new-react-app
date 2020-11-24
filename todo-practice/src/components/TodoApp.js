@@ -34,7 +34,7 @@ export default function TodoApp() {
     };
     // console.log(newTodo);
     // setTodos([...todos, newTodo]);
-    setTodos(todos.concat(newTodo));
+    setTodos(todos.concat(newTodo)); // 배열에 push 하는것보다 안정적(?)
   };
   // console.log(todos);
 
@@ -49,13 +49,14 @@ export default function TodoApp() {
   const removeTodo = (id) => {
     // console.log(id);
     setTodos(todos.filter((todo) => todo.id !== id));
-    // todos 배열의 하나하나를 차례로 실행하는데, 오른쪽 조건에 만족하는것 만으로 걸러냄
+    // todos 배열의 하나하나를 차례로 실행하는데, 오른쪽 조건에 만족하는것 만으로 걸러냄 -> 이렇게 만들어진 새로운 배열을 반환함
     // 뭔가를 반복할때 / 수정할때 : map
     // 뭔가를 지울때 : filter
   };
 
   return (
     <div>
+      <TodoCreator addTodo={addTodo} />
       {/* <TodoItem /> */}
       {todos.map((todo) => (
         <TodoItem
@@ -65,7 +66,6 @@ export default function TodoApp() {
           key={todo.id}
         />
       ))}
-      <TodoCreator addTodo={addTodo} />
     </div>
   );
 }
