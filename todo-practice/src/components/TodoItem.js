@@ -13,7 +13,7 @@ export default function TodoItem({ todo, removeTodo, onToggle }) {
   return (
     <div>
       <span
-        style={todo.done ? titleStyle : null}
+        style={todo.completed ? titleStyle : null}
         onClick={() => onToggle(todo.id)}
       >
         {todo.title}

@@ -1,27 +1,51 @@
 import React, { useState, useEffect } from "react";
 import cryptoRandomString from "crypto-random-string";
+import axios from "axios";
 import TodoCreator from "./TodoCreator";
 import TodoItem from "./TodoItem";
+import ErrorPage from "./ErrorPage";
 
 const initialTodos = [
   // { id:1, title:'아침먹기', done:false }
 ];
+
 // let id = 0;
 export default function TodoApp() {
   const [todos, setTodos] = useState(initialTodos);
 
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(null);
+  const [error, setError] = useState(null);
+
+  const fetchTodos = async () => {
+    ///   async : 비동기함수!
+    ///   await : 결과 제대로 받아올때까지 기다리자
+    ///   try catch : 비동기 처리를 해주려면 try catch 필요
+
+    try {
+      setError(null);
+      setSuccess(null);
+      setLoading(true);
+
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/todos2"
+      );
+      setSuccess(response.data);
+      setTodos(response.data);
+    } catch (e) {
+      setError(e);
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
-    // mount 되었을때 실행되는 부분
-    console.log("투두앱이 그려졌습니다!", todos);
-    return () => {
-      // unmount 되었을때 실행되는 부분
-      console.log("투두앱이 지워졌습니다.");
-    };
-  }, [todos]);
+    //console.log("투두앱이 그려졌습니다!");
+    fetchTodos();
+  }, []);
   // useEffect(() => {
-  //   effect
+  //   effect     // mount 되었을때 실행되는 부분
   //   return () => {
-  //     cleanup
+  //     cleanup  // unmount 되었을때 실행되는 부분
   //   }
   // }, [input])
 
@@ -30,7 +54,7 @@ export default function TodoApp() {
       //   id: id++,
       id: cryptoRandomString({ length: 10 }),
       title,
-      done: false,
+      completed: false,
     };
     // console.log(newTodo);
     // setTodos([...todos, newTodo]);
@@ -41,7 +65,7 @@ export default function TodoApp() {
   const onToggle = (id) => {
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, done: !todo.done } : todo
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
   };
@@ -54,8 +78,12 @@ export default function TodoApp() {
     // 뭔가를 지울때 : filter
   };
 
+  if (loading) return <div>로딩중...</div>;
+  if (error) return <ErrorPage />;
+  if (!success) return null;
+
   return (
-    <div>
+    <>
       <TodoCreator addTodo={addTodo} />
       {/* <TodoItem /> */}
       {todos.map((todo) => (
@@ -66,6 +94,6 @@ export default function TodoApp() {
           key={todo.id}
         />
       ))}
-    </div>
+    </>
   );
 }
