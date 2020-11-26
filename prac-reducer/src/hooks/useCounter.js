@@ -18,6 +18,22 @@ function reducer(state, action) {
           state.number - action.diff
         }가 되었습니다.`,
       };
+
+    case "ADD_TODO":
+      return {
+        ...state,
+        todos: state.todos.concat({
+          id: action.id,
+          title: action.title,
+          done: false,
+        }),
+      };
+    case "REMOVE_TODO":
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => action.id !== todo.id),
+      };
+
     default:
       // switch를 다 돌았는데 dispatch된 애(지금으로따지면 type: ~ )가 없다! 하면 에러띄워주기
       throw new Error("Unhandled Action Type");
