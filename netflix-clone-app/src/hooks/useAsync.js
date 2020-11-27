@@ -31,7 +31,7 @@ export default function useAsync(callback, deps = []) {
     }
   };
 
-  //1
+  //1 호출한 컴포넌트(MovieApp)가 생성되기 직전에 안의 내용을 실행
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line
