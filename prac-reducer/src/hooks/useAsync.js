@@ -34,6 +34,7 @@ export default function useAsync(axiosFunc) {
 
   // useEffect는 비동기가 안되기 때문에 비동기 요청을 처리할 수 있는 함수를 따로 만듦 --> fetchData()
   const fetchData = async () => {
+    // 비동기 할때는 async, await
     try {
       dispatch({ type: "LOADING" });
       const data = await axiosFunc();
