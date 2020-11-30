@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import useAsync from "../hooks/useAsync";
+import MovieItem from "./MovieItem";
 
 const fetchMovieRank = async () => {
   // 어짜피 useAsync 안에 있는 함수로 들어가서 trycatch를 해주기 때문에 여기서는 해줄 필요 x
@@ -19,10 +20,10 @@ export default function MovieApp() {
   if (!success) return null;
   return (
     <>
-      <div>THE MOVIE APP</div>
-      <div>
+      {/* <div>THE MOVIE APP</div> */}
+      <div className="item__parent">
         {success.results.map((v) => (
-          <h3>{v.title}</h3>
+          <MovieItem item={v} key={v.id} />
         ))}
       </div>
     </>
