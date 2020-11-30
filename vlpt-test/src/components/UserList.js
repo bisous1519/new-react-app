@@ -9,29 +9,14 @@ function User({ user }) {
   );
 }
 
-function UserList() {
-  const users = [
-    {
-      id: 1,
-      username: "eomji1",
-      email: "anipap1@naver.com",
-    },
-    {
-      id: 2,
-      username: "eomji2",
-      email: "anipap2@naver.com",
-    },
-    {
-      id: 3,
-      username: "eomji3",
-      email: "anipap3@naver.com",
-    },
-  ];
+function UserList({ users }) {
   return (
     <div>
       {users.map((user) => (
-        <User user={user} />
+        <User user={user} key={user.id} />
       ))}
+      {/* user.map((user, index) => (~~))
+          ㄴ> index를 사용해서 key를 하는건 피하는게 좋음 */}
 
       {/* <User user={users[0]} />
       <User user={users[1]} />
@@ -54,3 +39,6 @@ function UserList() {
 }
 
 export default UserList;
+
+// useRef로 관리하는 값은, 바뀌어도 컴포넌트가 리렌더링 되지 x!
+// 사용 : setTimeout, setInterval의 id / 외부라이브러리를 사용하여 생성된 인스턴스 / Scroll 위치 / ..
