@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import useAsync from "../hooks/useAsync";
 import MovieItem from "./MovieItem";
+import Banner from "./Banner";
+import Header from "./Header";
 
 const fetchMovieRank = async () => {
   // 어짜피 useAsync 안에 있는 함수로 들어가서 trycatch를 해주기 때문에 여기서는 해줄 필요 x
@@ -20,8 +22,9 @@ export default function MovieApp() {
   if (!success) return null;
   return (
     <>
-      {/* <div>THE MOVIE APP</div> */}
-      <div className="item__parent">
+      <Header />
+      <Banner item={success.results[0]} />
+      <div className="item__parent inner">
         {success.results.map((v) => (
           <MovieItem item={v} key={v.id} />
         ))}
@@ -29,3 +32,6 @@ export default function MovieApp() {
     </>
   );
 }
+
+// CSS : Cascading Style Sheets
+// SASS : Syntatically Awesome Style Sheets 문법적으로 짱멋진 스타일
