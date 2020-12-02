@@ -8,9 +8,13 @@ export default function Banner({ item }) {
         alt=""
       />
       <div className="summary">
-        <h1>TITLE</h1>
-        <p>~~~</p>
-        <span>평점</span>
+        <article>
+          <h1>{item.original_title}</h1>
+          <p>{item.release_date}</p>
+          <span>
+            🌟<strong>{item.vote_average}</strong>/10
+          </span>
+        </article>
       </div>
     </div>
   );
