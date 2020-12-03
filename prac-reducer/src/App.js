@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import MovieApp from "./components/MovieApp";
 import Nav from "./components/Nav";
 import TodoApp from "./components/TodoApp";
+import Detail from "./components/Detail";
 import "./scss/index.scss";
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
       {/* exact : 정확히 이 주소여야 Home을 띄워주겠다. 예를들어서 localhost:3000/about 하면 Home이랑 같이 뜨지 않게함! */}
       <Route path="/about" component={About} />
       <Route path="/counter" component={Counter} />
-      <Route path="/movie" component={MovieApp} />
+      <Route path="/movie" component={MovieApp} exact />
+      <Route path="/movie/:id" component={Detail} />
     </>
   );
 }

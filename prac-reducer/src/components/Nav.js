@@ -16,6 +16,9 @@ export default function Nav() {
       <NavLink to="/movie" activeStyle={{ textDecoration: "underline" }}>
         MOVIE
       </NavLink>
+      <NavLink to="/movie/eomji" activeStyle={{ textDecoration: "uunderline" }}>
+        Detail
+      </NavLink>
       {/* 네비게이션에 스타일을 주고싶으면 NavLink 로 하면됨! Link말고! */}
     </nav>
   );
