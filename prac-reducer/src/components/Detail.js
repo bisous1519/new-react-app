@@ -19,16 +19,27 @@ export default function Detail({ history, match, location }) {
   console.log(success);
   return (
     <div className="detail__container">
-      <h1>
-        {success.genres[0].name}/{success.genres[1] && success.genres[1].name}
-      </h1>
-      <h1>{success.original_title}</h1>
-      <h1>{success.overview}</h1>
-      <h1>{success.tagline}</h1>
-      <h1>{success.production_companies[0].name}</h1>
-      <h1></h1>
-      <h1></h1>
-      <h1></h1>
+      <div className="img__wrapper">
+        <img
+          src={`https://image.tmdb.org/t/p/w500${success.backdrop_path}`}
+          alt=""
+        />
+        <div className="detail__title">
+          <h1>{success.original_title}</h1>
+          <button>▶ PLAY</button>
+        </div>
+      </div>
+      <div className="summary">
+        <h1>
+          {success.genres[0].name}/{success.genres[1] && success.genres[1].name}
+        </h1>
+        <h1>{success.overview}</h1>
+        <h1>{success.tagline}</h1>
+        <h1>{success.production_companies[0].name}</h1>
+        <h1></h1>
+        <h1></h1>
+        <h1></h1>
+      </div>
     </div>
   );
 }

@@ -144,3 +144,55 @@ html {
     }
   }
 }
+.detail__container {
+  max-width: 700px;
+  margin: 0 auto;
+  .img__wrapper {
+    position: relative;
+    display: flex;
+    img {
+      width: 100%;
+    }
+    .detail__title {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.2);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      h1 {
+        font-size: 40px;
+        margin: 20px 0 0 30px;
+      }
+      button {
+        width: 80px;
+        height: 40px;
+        background: rgb(51, 51, 51);
+        border: none;
+        box-shadow: 0 0 5px rgb(131, 131, 131);
+        border-radius: 5px;
+        color: rgb(224, 224, 224);
+        margin-left: 15px;
+        margin-bottom: 15px;
+        display: none;
+        cursor: pointer;
+      }
+    }
+    &:hover {
+      .detail__title {
+        background: rgba(0, 0, 0, 0);
+        h1 {
+          color: rgba(255, 255, 255, 0.2);
+        }
+        button {
+          display: initial;
+        }
+      }
+    }
+  }
+  .summary {
+    h1 {
+    }
+  }
+}
