@@ -17,6 +17,7 @@ export default function Detail({ history, match, location }) {
   if (error) return <div>에러발생</div>;
   if (!success) return null; // 로그인유저가 없었을 때 안전장치 걸었던것 처럼!
   console.log(success);
+
   return (
     <div className="detail__container">
       <div className="img__wrapper">
@@ -30,15 +31,16 @@ export default function Detail({ history, match, location }) {
         </div>
       </div>
       <div className="summary">
-        <h1>
-          {success.genres[0].name}/{success.genres[1] && success.genres[1].name}
-        </h1>
-        <h1>{success.overview}</h1>
         <h1>{success.tagline}</h1>
-        <h1>{success.production_companies[0].name}</h1>
-        <h1></h1>
-        <h1></h1>
-        <h1></h1>
+        <div className="summary__more">
+          <h1>{success.overview}</h1>
+          <h1>
+            {success.genres[0].name}/
+            {success.genres[1] && success.genres[1].name}
+          </h1>
+          <h1>{success.production_companies[0].name}</h1>
+        </div>
+        <button>더보기</button>
       </div>
     </div>
   );

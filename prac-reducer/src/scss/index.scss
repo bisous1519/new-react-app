@@ -152,6 +152,7 @@ html {
     display: flex;
     img {
       width: 100%;
+      border-radius: 10px;
     }
     .detail__title {
       position: absolute;
@@ -192,7 +193,34 @@ html {
     }
   }
   .summary {
+    box-sizing: border-box;
+    width: 100%;
+    background: rgb(29, 29, 29);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     h1 {
+      font-size: 20px;
+    }
+    .summary__more {
+      display: none;
+    }
+    button {
+      margin-top: 20px;
+      background: rgb(22, 22, 22);
+      border: none;
+      color: white;
+      width: 100%;
+      height: 35px;
+      border-radius: 5px;
+      cursor: pointer;
+      &:active {
+        background: red;
+        .summary__more {
+          display: flex;
+        }
+      }
     }
   }
 }
