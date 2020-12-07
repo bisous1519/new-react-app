@@ -1,6 +1,7 @@
 import React from "react";
 
 function CreateUser({ username, email, onChange, onCreate }) {
+  console.log("CreateUser가 리렌더링됨");
   return (
     <div>
       <input
@@ -20,4 +21,5 @@ function CreateUser({ username, email, onChange, onCreate }) {
   );
 }
 
-export default CreateUser;
+export default React.memo(CreateUser);
+//                       : props가 바뀌었을때만 리렌더링 해줌
