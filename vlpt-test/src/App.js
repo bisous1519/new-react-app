@@ -6,6 +6,7 @@ import Hello from "./components/Hello";
 import InputSample from "./components/InputSample";
 import UserList from "./components/UserList";
 import Wrapper from "./components/Wrapper";
+import ReducerApp from "./ReducerApp";
 
 function countActiveUsers(users) {
   console.log("활성 사용자 수를 세는 중...");
@@ -88,23 +89,26 @@ function App() {
   return (
     <>
       <br />
-      {"1) -----------------------------------------"}
+      {"1) --- props 통해 컴포넌트에게 값 전달 + 조건부렌더링 ----------------"}
       <Wrapper>
         <Hello name="엄지" color="royalblue" isSpecial={true} />
         <Hello color="pink" />
         {/* Hello 에서 넘겨준 name, color --> props */}
       </Wrapper>
-
       <br />
-      {"2) -----------------------------------------"}
+      {"2) --- useState ---------------------------------------------------"}
       <Counter />
-
       <br />
-      {"3) -----------------------------------------"}
+      {
+        "3) --- useState 이용한 input 상태 관리 + useRef : 특정 DOM 선택 -------"
+      }
       <InputSample />
-
       <br />
-      {"4) -----------------------------------------"}
+      {
+        "4) --- useRef : 컴포넌트 안의 변수 + 동적인 배열렌더링 : map + filter ---"
+      }{" "}
+      <br />
+      {"------- useEffect"}
       <CreateUser
         username={username}
         email={email}
@@ -113,10 +117,28 @@ function App() {
       />
       <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
       <div>활성 사용자 수 : {count}</div>
-
       <br />
-      {"5) -----------------------------------------"}
+      {"5) -----------------------------------------"} <br />
+      {"useState대신, useReducer를 사용한 counter!"}
       <CounterReducer />
+      <br />
+      {"6) -----------------------------------------"}
+      <ReducerApp />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </>
   );
 }

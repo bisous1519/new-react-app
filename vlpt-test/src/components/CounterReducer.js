@@ -15,8 +15,8 @@ function reducer(state, action) {
 
 export default function CounterReducer() {
   const [number, dispatch] = useReducer(reducer, 0);
-  //                                    ㄴ> dispatch 에서 action을 넘겨줄 함수, state(여기서의 number)의 초기값
-
+  //                                    -------  -- : state(여기서의 number)의 초기값
+  //                                      ㄴ> dispatch 에서 action을 넘겨줄 함수
   const increase = () => {
     dispatch({
       type: "INCREMENT",
