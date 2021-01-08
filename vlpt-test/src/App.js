@@ -7,6 +7,7 @@ import InputSample from "./components/InputSample";
 import UserList from "./components/UserList";
 import Wrapper from "./components/Wrapper";
 import ReducerApp from "./ReducerApp";
+import ReducerApp2 from "./ReducerApp2";
 
 function countActiveUsers(users) {
   console.log("활성 사용자 수를 세는 중...");
@@ -123,8 +124,12 @@ function App() {
       <CounterReducer />
       <br />
       {"6) -----------------------------------------"}
+      {"useReducer를 사용한 counter!"}
       <ReducerApp />
       <br />
+      {"7) -----------------------------------------"}
+      {"customHook 만들어서 input 관리하기"}
+      <ReducerApp2 />
       <br />
       <br />
       <br />
