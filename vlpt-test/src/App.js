@@ -1,4 +1,5 @@
 import React, { useRef, useState, useMemo, useCallback } from "react";
+import ContextSample from "./components/ContextSample";
 import Counter from "./components/Counter";
 import CounterReducer from "./components/CounterReducer";
 import CreateUser from "./components/CreateUser";
@@ -119,18 +120,25 @@ function App() {
       <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
       <div>활성 사용자 수 : {count}</div>
       <br />
-      {"5) -----------------------------------------"} <br />
+      {"5) -----------------------------------------"}
+      <br />
       {"useState대신, useReducer를 사용한 counter!"}
       <CounterReducer />
       <br />
       {"6) -----------------------------------------"}
+      <br />
       {"useReducer를 사용한 counter!"}
       <ReducerApp />
       <br />
       {"7) -----------------------------------------"}
+      <br />
       {"customHook 만들어서 input 관리하기"}
       <ReducerApp2 />
       <br />
+      {"8) -----------------------------------------"}
+      <br />
+      {"Context API 로 전역값 관리하기"}
+      <ContextSample />
       <br />
       <br />
       <br />
