@@ -1,4 +1,5 @@
 import React, { useRef, useState, useMemo, useCallback } from "react";
+import App3 from "./App3";
 import ContextSample from "./components/ContextSample";
 import Counter from "./components/Counter";
 import CounterReducer from "./components/CounterReducer";
@@ -140,6 +141,11 @@ function App() {
       {"Context API 로 전역값 관리하기"}
       <ContextSample />
       <br />
+      <br />
+      {"9) -----------------------------------------"}
+      <br />
+      {"customHook 만들어서 input 관리하기"}
+      <App3 />
       <br />
       <br />
       <br />

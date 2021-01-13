@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { UserDispatch } from "./App3";
 
-const User = React.memo(function User({ user, onRemove, onToggle }) {
+const User = React.memo(function User({ user }) {
   const { username, email, id, active } = user;
+  const dispatch = useContext();
   useEffect(() => {
     console.log("user 값이 설정됨");
     console.log(user);
@@ -41,16 +43,11 @@ const User = React.memo(function User({ user, onRemove, onToggle }) {
   );
 });
 
-function UserList({ users, onRemove, onToggle }) {
+function UserList({ users }) {
   return (
     <div>
       {users.map((user) => (
-        <User
-          user={user}
-          key={user.id}
-          onRemove={onRemove}
-          onToggle={onToggle}
-        />
+        <User user={user} key={user.id} />
       ))}
       {/* user.map((user, index) => (~~))
           ㄴ> index를 사용해서 key를 하는건 피하는게 좋음 */}
