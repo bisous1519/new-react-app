@@ -1,4 +1,5 @@
 import React, { useRef, useState, useMemo, useCallback } from "react";
+import produce from "immer";
 import App3 from "./App3";
 import App4Context from "./App4Context";
 import ContextSample from "./components/ContextSample";
@@ -153,6 +154,30 @@ function App() {
       {"UserDispatch Context 완성형!"}
       <App4Context />
       <br />
+      {"11) -----------------------------------------"}
+      <br />
+      {"immer 라이브러리를 사용해 더 쉽게 불변성 지키기"}
+      {/* 
+      const object = {
+        a: 1,
+        b: 2
+      };
+
+      //object.b = 3; // 이렇게 값을 직접적으로 고치는건 불변성을 깨뜨리는 행위!
+      const nextObject = {
+        ...object,
+        b: 3
+      };
+      // 이렇게 spread연산자를 통해 새로운 객체를 만들어 기존의 값을 집어넣고, 새로운 값으로 덮어쓰는게 올바른 방식!
+      // --> 컴포넌트가 나중에 제대로 리랜더링되고, 컴포넌트 최적화도 가능해짐
+
+      // 배열도 마찬가지로, .push .splice 를 통한 직접적인 수정은 ㄴㄴ
+      // .concat .filter .map 등의 함수를 통해 새로운 배열을 만들어서 작업해야함!
+
+      // 불변성을 지키기 복잡한 코드의 경우에는
+      // ** immer 를 사용하면 (yarn add immer)
+      // ** --> 불변성을 해치는 코드를 작성해도 대신 불변성을 유지해줌!
+       */}
       <br />
       <br />
       <br />
