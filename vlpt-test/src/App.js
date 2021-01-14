@@ -1,5 +1,6 @@
 import React, { useRef, useState, useMemo, useCallback } from "react";
 import App3 from "./App3";
+import App4Context from "./App4Context";
 import ContextSample from "./components/ContextSample";
 import Counter from "./components/Counter";
 import CounterReducer from "./components/CounterReducer";
@@ -144,8 +145,13 @@ function App() {
       <br />
       {"9) -----------------------------------------"}
       <br />
-      {"customHook 만들어서 input 관리하기"}
+      {"UserDispatch Context 만들기"}
       <App3 />
+      <br />
+      {"10) -----------------------------------------"}
+      <br />
+      {"UserDispatch Context 완성형!"}
+      <App4Context />
       <br />
       <br />
       <br />
